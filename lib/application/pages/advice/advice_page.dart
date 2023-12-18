@@ -19,7 +19,7 @@ class AdviserPageWrapper extends StatelessWidget {
 }
 
 class _AdvicePage extends StatelessWidget {
-  const _AdvicePage({super.key});
+  const _AdvicePage();
 
   @override
   Widget build(BuildContext context) {
