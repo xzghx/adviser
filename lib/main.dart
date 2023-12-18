@@ -1,7 +1,9 @@
+import 'package:advicer_app/application/core/services/theme_service.dart';
+import 'package:advicer_app/application/pages/advice/advice_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'theme_service.dart';
+import 'theme.dart';
 
 void main() {
   runApp(ChangeNotifierProvider<ThemeService>(
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
         builder: (context, ThemeService themeService, widget) {
       return MaterialApp(
         themeMode: themeService.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        theme: ThemeService.lightTheme,
+        theme:
+            themeService.isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
+        home: const AdviserPageWrapper(),
       );
     });
   }
