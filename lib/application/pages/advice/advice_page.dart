@@ -1,5 +1,5 @@
 import 'package:advicer_app/application/core/services/theme_service.dart';
-import 'package:advicer_app/application/pages/advice/bloc/advicer_bloc.dart';
+import 'package:advicer_app/application/pages/advice/cubit/advicer_cubit.dart';
 import 'package:advicer_app/application/pages/advice/widgets/advice_button.dart';
 import 'package:advicer_app/application/pages/advice/widgets/advise_field.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,8 @@ class AdviserPageWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AdviserBloc>(
-      create: (context) => AdviserBloc(),
+    return BlocProvider<AdvicerCubit>(
+      create: (context) => AdvicerCubit(),
       child: const _AdvicePage(),
     );
   }
@@ -44,7 +44,7 @@ class _AdvicePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Center(child: BlocBuilder<AdviserBloc, AdviserState>(
+              child: Center(child: BlocBuilder<AdvicerCubit, AdviserState>(
                 builder: (context, state) {
                   if (state is AdviserInitial) {
                     return const AdviceField(advice: 'Let see an advice!');
@@ -55,7 +55,7 @@ class _AdvicePage extends StatelessWidget {
                   } else if (state is AdviserLoaded) {
                     return AdviceField(advice: state.advice);
                   } else if (state is AdviserError) {
-                    return AdviceField(advice: state.error);
+                    return AdviceError(error: state.error);
                   }
                   return const SizedBox();
                 },

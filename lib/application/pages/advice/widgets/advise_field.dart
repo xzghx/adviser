@@ -31,3 +31,33 @@ class AdviceField extends StatelessWidget {
     );
   }
 }
+
+class AdviceError extends StatelessWidget {
+  const AdviceError({super.key, required this.error});
+
+  final String error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.error,
+          color: Theme.of(context).colorScheme.error,
+          size: 43,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+              child: Text(
+            '''"$error"''',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 18),
+          )),
+        ),
+      ],
+    );
+  }
+}
