@@ -8,8 +8,8 @@ import '../../../../domain/usecases/advice_usecases.dart';
 part 'advicer_state.dart';
 
 class AdvicerCubit extends Cubit<AdviserState> {
-  AdvicerCubit() : super(AdviserInitial());
-  AdviseUseCase adviseUseCase = AdviseUseCase();
+  AdvicerCubit({required this.adviseUseCase}) : super(AdviserInitial());
+  AdviseUseCase adviseUseCase;
 
   void adviceRequest() async {
     emit(AdviserLoading());

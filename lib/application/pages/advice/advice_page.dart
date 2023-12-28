@@ -6,13 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
+import '../../../di.dart';
+
 class AdviserPageWrapper extends StatelessWidget {
   const AdviserPageWrapper({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AdvicerCubit>(
-      create: (context) => AdvicerCubit(),
+      create: (context) => sl<AdvicerCubit>(),
       child: const _AdvicePage(),
     );
   }

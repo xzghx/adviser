@@ -3,9 +3,12 @@ import 'package:advicer_app/application/pages/advice/advice_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'di.dart' as di;
 import 'theme.dart';
 
-void main() {
+void main() async {
+  await di.init();
+
   runApp(ChangeNotifierProvider<ThemeService>(
     create: (context) => ThemeService(),
     child: const MyApp(),
