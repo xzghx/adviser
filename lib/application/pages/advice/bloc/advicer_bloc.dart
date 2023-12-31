@@ -10,7 +10,8 @@ class AdviserBloc extends Bloc<AdviserEvent, AdviserState> {
     on<AdviceRequest>((event, emit) async {
       emit(AdviserLoading());
       await Future.delayed(const Duration(seconds: 1));
-      emit(AdviserLoaded(advice: 'Fake advice'));
+      emit(AdviserError(error: 'Fake error'));
+      // emit(AdviserLoaded(advice: 'Fake advice'));
     });
   }
 }

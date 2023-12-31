@@ -31,7 +31,9 @@ dev_dependencies:
   mockito: ^5.4.4
   test: ^1.24.9
   build_runner: ^2.4.7
-
+  bloc_test: ^9.1.5
+  alchemist: ^0.7.0
+  mocktail: ^1.0.2
 flutter:
 
   uses-material-design: true
