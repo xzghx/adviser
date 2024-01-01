@@ -15,13 +15,13 @@ class AdviserPageWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AdvicerCubit>(
       create: (context) => sl<AdvicerCubit>(),
-      child: const _AdvicePage(),
+      child: const AdvicePage(),
     );
   }
 }
 
-class _AdvicePage extends StatelessWidget {
-  const _AdvicePage();
+class AdvicePage extends StatelessWidget {
+  const AdvicePage();
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +46,34 @@ class _AdvicePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Center(child: BlocBuilder<AdvicerCubit, AdviserState>(
-                builder: (context, state) {
-                  if (state is AdviserInitial) {
-                    return const AdviceField(advice: 'Let see an advice!');
-                  } else if (state is AdviserLoading) {
-                    return CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.secondary,
-                    );
-                  } else if (state is AdviserLoaded) {
-                    return AdviceField(advice: state.advice);
-                  } else if (state is AdviserError) {
-                    return AdviceError(error: state.error);
-                  }
-                  return const SizedBox();
-                },
-              )),
+              child: Center(
+                child: BlocBuilder<AdvicerCubit, AdviserState>(
+                  builder: (context, state) {
+                    if (state is AdviserInitial) {
+                      return const AdviceField(advice: 'Let see an advice!');
+                    } else if (state is AdviserLoading) {
+                      return CircularProgressIndicator(
+                        color: Theme.of(context).colorScheme.secondary,
+                      );
+                    } else if (state is AdviserLoaded) {
+                      return AdviceField(advice: state.advice);
+                    } else if (state is AdviserError) {
+                      return AdviceError(error: state.error);
+                    }
+                    return const SizedBox();
+                  },
+                ),
+              ),
               // ErrorMessage(error: 'Something went wrong.')
             ),
-            const SizedBox(height: 200, child: Center(child: AdviceButton())),
+            SizedBox(
+              height: 200,
+              child: Center(
+                child: AdviceButton(
+                  onTap: () => context.read<AdvicerCubit>().adviceRequest(),
+                ),
+              ),
+            ),
           ],
         ),
       ),

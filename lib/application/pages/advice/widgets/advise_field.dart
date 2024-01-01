@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AdviceField extends StatelessWidget {
   const AdviceField({super.key, required this.advice});
 
+  static const String emptyString = 'No advise';
   final String advice;
 
   @override
@@ -22,7 +23,7 @@ class AdviceField extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Center(
                     child: Text(
-                  '''"$advice"''',
+                  advice.isNotEmpty ? '''"$advice"''' : emptyString,
                   textAlign: TextAlign.center,
                 )),
               )),

@@ -1,15 +1,15 @@
-import 'package:advicer_app/application/pages/advice/cubit/advicer_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdviceButton extends StatelessWidget {
-  const AdviceButton({super.key});
+  const AdviceButton({super.key, this.onTap});
+
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return InkResponse(
-      onTap: () => context.read<AdvicerCubit>().adviceRequest(),
+      onTap: onTap,
       child: Material(
         elevation: 20,
         borderRadius: BorderRadius.circular(15),
