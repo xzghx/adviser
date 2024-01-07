@@ -11,5 +11,7 @@ An adviser app, written to suggest motivational quotes.
    - Bloc and Cubit as stateManagement 
  
    - GetIt for Dependency Injection
+
+   - Unit test, Widget test
   
 
